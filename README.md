@@ -15,7 +15,7 @@ lastmile --out artifacts --seed 42 --days 730 --horizon 14 --samples 200
 ```
 
 Without installation: `PYTHONPATH=src python3 -m lastmile.cli --out artifacts`.
-The destination must be empty. Change `--out` for each experiment. `lastmile --help` lists controls. Six tests cover reproducibility, scenario effects, leakage, persistence, invalid inputs, and the complete CLI. GitHub Actions repeats tests and a default run.
+The destination must be empty. Change `--out` for each experiment. `lastmile --help` lists controls. Tests cover reproducibility, scenario effects, leakage, persistence, invalid inputs, and the complete CLI. GitHub Actions repeats tests and a default run.
 
 ## What the models do
 
@@ -24,7 +24,7 @@ The destination must be empty. Change `--out` for each experiment. `lastmile --h
 3. Learned generator: ridge regression of log(1 + count) on calendar/context features, followed by circular seven-day block resampling of fitted residual vectors. Whole vectors preserve cross-district dependence; blocks approximate short-run serial dependence. Counts are clipped at zero and rounded. The point forecast uses empirical smearing for log retransformation.
 4. Future normal, +30% surge, and disruption paths share the same random residuals/context. Disruption means **20% fewer incoming parcels**, not reduced vehicle capacity. These multipliers are user-defined interventions, not effects learned from evidence. A teammate may separately combine rain or capacity disruption with demand paths.
 
-This is an empirical statistical generative model, not a GAN, VAE, diffusion model, or LLM. It learns a conditional distribution and produces new demand paths. Ask the lecturer whether this satisfies the intended AI/GenAI scope; if a neural GenAI architecture is required, extend this interface with a conditional VAE and compare it against this simpler model. Do not describe this implementation as neural GenAI.
+The default is an empirical statistical generator. An optional neural conditional VAE is now available via `--model cvae`; it learns daily joint district demand, with an explicitly assumed hourly allocation via `--hourly`. See [technical and teammate handoff](docs/handoff.md) for installation, architecture, limitations and remaining simulation work. No hourly training observations are available.
 
 Method background: [Hyndman and Athanasopoulos, bootstrapping and bagging](https://otexts.com/fpp3/bootstrap.html) and [distributional forecasts](https://otexts.com/fpp3/prediction-intervals.html). The joint residual vector and seven-day block choices here are project design decisions.
 
@@ -42,7 +42,7 @@ The committed `examples/default-run` uses seed 42, 730 history days, a 14-day ho
 
 The nominal 90% interval covers 86.99% of held-out district-days: some undercoverage remains. Average width is 549.47 parcels. Generated versus held-out means are 1556.46 versus 1549.75 parcels per district-day. Mean daily totals are 5069.13 normal, 6589.87 surge, and 4055.31 disruption. See `metrics.json` for full diagnostics and `manifest.json` for parameters, versions, and CSV/report hashes. Model NPZ byte hashes are excluded because ZIP metadata can vary; learned arrays and sampled outputs are tested for round-trip equivalence.
 
-These results demonstrate internal consistency under the synthetic assumptions. The generator and model share similar functional structure, making the exercise favorable to the model. They do not establish real-world accuracy, realism, delay reduction, or business benefit. The proposed 15% delay rate is an assumed case input, not a finding. Residual stationarity, fixed shares, limited tails, short history, omitted parameter uncertainty, and exogenous-context uncertainty limit generalization.
+These results demonstrate internal consistency under the synthetic assumptions. The generator and model share similar functional structure, making the exercise favorable to the model. They do not establish real-world accuracy, realism, delay reduction, or business benefit. The proposed 15% delay rate is a hypothetical calibration target, not historical observed data or a finding. The teammate sample delay/time/utilization table is illustrative, not simulation findings. Residual stationarity, fixed shares, limited tails, short history, omitted parameter uncertainty, and exogenous-context uncertainty limit generalization.
 
 Before final reporting, repeat across seeds and rolling date cutoffs, inspect district distributions, correlations and lag dependence, vary block length and shocks, and calibrate intervals on a separate validation period. Real deployment requires permissioned company counts, actual promotion/holiday/weather records, and external validation.
 
@@ -53,4 +53,4 @@ Before final reporting, repeat across seeds and rolling date cutoffs, inspect di
 - `model.npz`: learned coefficients and residual vectors; load with `DemandModel.load`.
 - `metrics.json`, `manifest.json`: evaluation and experiment provenance.
 
-See [simulation interface](docs/interface.md), [course alignment](docs/course-alignment.md), and [publishing steps](docs/publishing.md). Core API lives in `src/lastmile/model.py`. Everything runs offline after installing NumPy. No private data or API keys are needed. Licensing is intentionally left for the project owner to choose before public distribution.
+See [simulation interface](docs/interface.md), [course alignment](docs/course-alignment.md), and [publishing steps](docs/publishing.md). Core API lives in `src/lastmile/model.py`. The default runs offline after installing NumPy; the optional CVAE also requires PyTorch. No private data or API keys are needed. Licensing is intentionally left for the project owner to choose before public distribution.

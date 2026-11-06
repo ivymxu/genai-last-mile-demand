@@ -7,14 +7,16 @@ The proposed Hong Kong e-commerce delivery operation is a feasible off-campus ca
 | Guideline element | Phase 1 contribution | Remaining team work |
 |---|---|---|
 | Industrial case and objectives | Defined synthetic delivery-demand case | Agree operational assumptions and objective |
-| Technology and method | Conditional statistical generator plus baseline | Confirm lecturer accepts this GenAI scope; neural extension if needed |
+| Technology and method | Conditional statistical generator plus baseline | Optional neural CVAE implemented; compare against statistical baseline |
 | Data collection | Seeded synthetic history; explicit provenance | Company data collection plan and calibration |
 | Model building and diagrams | History → chronological split → fit/evaluate → refit → scenario CSV → simulation interface | System layout and entity flow diagram |
-| Entities, arrivals, distributions | District-day counts and context schema | Intraday arrival process, parcels, queues, network, vehicles, routing/service distributions |
-| Testing | Determinism, leakage, scenario controls, held-out diagnostics | Actual-system comparison and simulation extreme-condition tests |
+| Entities, arrivals, distributions | District-day counts and context schema | Confirm assumed hourly profile; implement parcels, queues, vehicles, routing/service distributions |
+| Testing | Determinism, leakage, scenario controls, held-out diagnostics | Hypothetical 15% target calibration, fleet sensitivity and surge+disruption simulation tests |
 | Findings | Forecast error and scenario demand totals | Delay-risk ranking, policy comparison, confidence intervals |
 | Conclusions/business achievement | Phase 1 feasibility and limitations | Evidence of simulated delay reduction; avoid claiming real operational gains |
 | Submission | Reproducible code and demand exports | PPT, executable simulation file, 10-minute presentation and Q&A |
 | Responsibilities | Demand/model contributor owns this phase | Assign simulation, experiments, presentation and integration owners |
 
 A bootstrap generator is practical, fast, explainable and reproducible, but acceptance as the intended modern GenAI technology is uncertain. Obtain lecturer clarification before committing the presentation title to a neural or LLM claim. Phase 1 alone is not a complete course submission. Avoid reporting synthetic validation as a comparison against actual company behavior.
+
+See [named teammate handoff](handoff.md). The 15% delay target is hypothetical, not historical observed data. Sample operational results are illustrative only. The optional CVAE is neural; the default statistical model remains available.
