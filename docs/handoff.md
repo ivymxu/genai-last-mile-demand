@@ -1,3 +1,5 @@
+> Integration update: the operational simulator and dashboard are now implemented. See [TEAM_HANDOFF](../TEAM_HANDOFF.md) and [logistics implementation](logistics.md). Phase-1 scope statements below describe the original demand component.
+
 # Phase-1 technical handoff
 
 ## Demand contributor (implemented)

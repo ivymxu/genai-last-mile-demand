@@ -1,3 +1,5 @@
+> Integration update: the operational simulator and dashboard are now implemented. See [TEAM_HANDOFF](../TEAM_HANDOFF.md) and [logistics implementation](logistics.md). Phase-1 scope statements below describe the original demand component.
+
 # Feasibility and ISE450 alignment
 
 Reviewed source: Project Guideline_4b.docx attached to the referenced Build GenAI Model Repo conversation. The supplied guideline describes a group project worth 30%: presentation 15%, PPT and simulation file 15%. It requires a 10-minute presentation, an off-campus case, objectives, technology/method, model building, data sources, model summary, testing where applicable, findings, conclusions, future plan and member responsibilities. It explicitly lists AI/Generative AI among suggested Logistics 4.0 technologies. No dates were present in the extracted schedule fields.

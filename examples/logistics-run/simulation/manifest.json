@@ -1,0 +1,145 @@
+{
+  "config": {
+    "fleet": 48,
+    "capacity": 24,
+    "window_hours": 4.0,
+    "service_minutes": 3.0,
+    "dispatch_minutes": 15.0,
+    "speed_factor": 1.0,
+    "capacity_factor": 1.0,
+    "demand_factor": 1.0,
+    "seed": 42
+  },
+  "replications": 5,
+  "paths": [
+    {
+      "start_date": "2025-12-31",
+      "days": 3,
+      "sample_id": 0,
+      "source_scenario": "normal",
+      "hourly_input": true
+    },
+    {
+      "start_date": "2025-12-31",
+      "days": 3,
+      "sample_id": 1,
+      "source_scenario": "normal",
+      "hourly_input": true
+    },
+    {
+      "start_date": "2025-12-31",
+      "days": 3,
+      "sample_id": 2,
+      "source_scenario": "normal",
+      "hourly_input": true
+    },
+    {
+      "start_date": "2025-12-31",
+      "days": 3,
+      "sample_id": 3,
+      "source_scenario": "normal",
+      "hourly_input": true
+    },
+    {
+      "start_date": "2025-12-31",
+      "days": 3,
+      "sample_id": 4,
+      "source_scenario": "normal",
+      "hourly_input": true
+    }
+  ],
+  "policies": {
+    "normal": {
+      "fleet": 48,
+      "capacity": 24,
+      "window_hours": 4.0,
+      "service_minutes": 3.0,
+      "dispatch_minutes": 15.0,
+      "speed_factor": 1.0,
+      "capacity_factor": 1.0,
+      "demand_factor": 1.0,
+      "seed": 42
+    },
+    "surge": {
+      "fleet": 48,
+      "capacity": 24,
+      "window_hours": 4.0,
+      "service_minutes": 3.0,
+      "dispatch_minutes": 15.0,
+      "speed_factor": 1.0,
+      "capacity_factor": 1.0,
+      "demand_factor": 1.3,
+      "seed": 42
+    },
+    "typhoon": {
+      "fleet": 48,
+      "capacity": 24,
+      "window_hours": 4.0,
+      "service_minutes": 3.0,
+      "dispatch_minutes": 15.0,
+      "speed_factor": 0.55,
+      "capacity_factor": 0.7,
+      "demand_factor": 1.0,
+      "seed": 42
+    },
+    "surge_typhoon": {
+      "fleet": 48,
+      "capacity": 24,
+      "window_hours": 4.0,
+      "service_minutes": 3.0,
+      "dispatch_minutes": 15.0,
+      "speed_factor": 0.55,
+      "capacity_factor": 0.7,
+      "demand_factor": 1.3,
+      "seed": 42
+    },
+    "fleet_minus20": {
+      "fleet": 38,
+      "capacity": 24,
+      "window_hours": 4.0,
+      "service_minutes": 3.0,
+      "dispatch_minutes": 15.0,
+      "speed_factor": 1.0,
+      "capacity_factor": 1.0,
+      "demand_factor": 1.0,
+      "seed": 42
+    },
+    "fleet_plus20": {
+      "fleet": 58,
+      "capacity": 24,
+      "window_hours": 4.0,
+      "service_minutes": 3.0,
+      "dispatch_minutes": 15.0,
+      "speed_factor": 1.0,
+      "capacity_factor": 1.0,
+      "demand_factor": 1.0,
+      "seed": 42
+    },
+    "surge_fleet_plus15": {
+      "fleet": 55,
+      "capacity": 24,
+      "window_hours": 4.0,
+      "service_minutes": 3.0,
+      "dispatch_minutes": 15.0,
+      "speed_factor": 1.0,
+      "capacity_factor": 1.0,
+      "demand_factor": 1.3,
+      "seed": 42
+    }
+  },
+  "python": "3.12.6",
+  "versions": {
+    "numpy": "2.3.5",
+    "simpy": "4.1.1",
+    "scipy": "1.18.1",
+    "streamlit": "1.67.0"
+  },
+  "input_sha256": "f0dbdee3c7effb2a06505788b4c9283cb7630d2e7e177051638920a59654d3c8",
+  "files_sha256": {
+    "REPORT.md": "e997fe9ad646bd98c51c32bc385fbb86a74ab88f3aa82eede3d0ea329fc7e03c",
+    "normal_orders_rep0.csv": "d792370a4296e93f81c7d3c644cfeca44f0bd82efdaecc0567f4906c2b53b89c",
+    "replications.csv": "b61b6a77a575d19559a084ed09de82d685accb554a887026fbcce6e02d1e8e76",
+    "results.json": "e87dd9be553a6ccaf3f4c688ef5bde76bc9cf7588eed2a56b1981d94bdf1304a",
+    "summary.csv": "d11745a3b6c14f2d6b093322e04e62f3c5d7ccc85ecf1ad3bfc5a3fe6002a8e7"
+  }
+}

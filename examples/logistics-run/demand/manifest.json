@@ -1,0 +1,26 @@
+{
+  "model": "statistical",
+  "epochs": null,
+  "hourly_profile": "assumed two-peak multinomial",
+  "torch": null,
+  "seed": 42,
+  "days": 730,
+  "horizon": 3,
+  "samples": 5,
+  "train_days": 584,
+  "test_days": 146,
+  "python": "3.12.6",
+  "numpy": "2.3.5",
+  "data_kind": "fully synthetic; no real company data",
+  "sha256": {
+    "disruption.csv": "aa923507e9aa7825ae72f9c5fbd01e920b2c7e2a8e68ab6e4c0d9f11dc1b4e88",
+    "disruption_hourly.csv": "e82b2c00b91031fe10c1751aa613acc2a106c32fa80f9a96123b82d3ac4ee7e0",
+    "history.csv": "c8e952a01cd614f501ebe4d71c0e668b429f5df27026bdeaaf7213476d9135e5",
+    "history_hourly.csv": "643792c45ecafd072c60ef456c4cd226ef6fdfda6c265e9733b319875a5f3f82",
+    "metrics.json": "87d882bb680f96ba6e04a42a8e92e6ac9c5adfd2ae849811c2560babaea3e678",
+    "normal.csv": "0ad0c81b1ea3ba17ee382681cc6c470443b65ac61b7a06823aa4fcda5dbcb337",
+    "normal_hourly.csv": "f0dbdee3c7effb2a06505788b4c9283cb7630d2e7e177051638920a59654d3c8",
+    "surge.csv": "516ff49f6c712781deee797b4c38d126b2fe2bbe5f68f0a1d56d13d824c031ce",
+    "surge_hourly.csv": "fb9958865f978b691ff20e2e7a7b932a52afc7f422cc116c61c308ccfb4bf1eb"
+  }
+}

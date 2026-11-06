@@ -1,0 +1,39 @@
+{
+  "weekday_mean": {
+    "mae": 231.6587920501314,
+    "rmse": 285.0649893739648,
+    "wape": 0.14948172542271246
+  },
+  "conditional_mean": {
+    "mae": 145.4383503898262,
+    "rmse": 192.26073707714016,
+    "wape": 0.09384653768806489
+  },
+  "generative": {
+    "coverage_90": 0.8698630136986302,
+    "mean_interval_width": 549.4673515981733,
+    "heldout_mean": 1549.7465753424658,
+    "generated_mean": 1556.457086757991,
+    "heldout_std": 479.19713789124154,
+    "generated_std": 472.2990444821243,
+    "district_mean_relative_error": [
+      0.0038414627645397426,
+      0.0030300323787899094,
+      0.00564488307259703
+    ]
+  },
+  "scenarios": {
+    "normal": {
+      "mean_daily_total": 5103.666666666667,
+      "multiplier": 1.0
+    },
+    "surge": {
+      "mean_daily_total": 6634.733333333334,
+      "multiplier": 1.3
+    },
+    "disruption": {
+      "mean_daily_total": 4082.866666666667,
+      "multiplier": 0.8
+    }
+  }
+}
