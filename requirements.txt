@@ -1,0 +1,2 @@
+# Install from repository root; includes simulator and dashboard.
+-e .

@@ -1,3 +1,5 @@
+> Integration update: the operational simulator and dashboard are now implemented. See [TEAM_HANDOFF](../TEAM_HANDOFF.md) and [logistics implementation](logistics.md). Phase-1 scope statements below describe the original demand component.
+
 # Demand interface for simulation teammates
 
 Each scenario CSV has exactly these columns:
@@ -13,9 +15,9 @@ Each scenario CSV has exactly these columns:
 
 The scenario primary key is (scenario, sample_id, date, district). History has sample_id 0. One complete path contains horizon × 3 rows. Select one sample_id per simulation replication; do not sum different sample_ids together. Use matching sample_ids across scenarios for paired comparisons. Aggregate counts are not parcel records and contain no addresses, intraday arrival times, parcel sizes, or promised delivery deadlines.
 
-Teammates must specify the mapping from district counts to parcel entities, intraday arrival distributions, delivery coordinates, service times, time windows, network distances, vehicles, capacities, and routing policy. Preserve each district-day total when expanding counts. Rain may affect travel/service speed in the simulation, but that effect must be separately justified. Demand reduction in the disruption scenario does not imply a capacity reduction.
+The integrated simulator defines the mapping from district counts to parcels, hourly arrivals, coordinates, service times, windows, distances, vehicles, capacities and dispatch policy in TEAM_HANDOFF.md. Preserve each district-day total when expanding counts. Rain may affect travel/service speed in the simulation, but that effect must be separately justified. Demand reduction in the disruption scenario does not imply a capacity reduction.
 
-Suggested simulation outputs: replication-level delayed parcels / total parcels, utilization, lead time, and optional distance/cost. Compare policies under the same demand paths and report uncertainty across replications. Demand alone cannot identify the highest delay risk: vehicle capacity and routing may change the ordering. No routing policy or simulation engine is provided in phase 1.
+Suggested simulation outputs: replication-level delayed parcels / total parcels, utilization, lead time, and optional distance/cost. Compare policies under the same demand paths and report uncertainty across replications. Demand alone cannot identify the highest delay risk: vehicle capacity and routing may change the ordering. The operational engine now lives in lastmile.simulation.
 
 Programmatic customization: construct daily dictionaries with date and binary promotion/rain/holiday flags; fit DemandModel on an N×3 count matrix in DISTRICTS order; call sample(rows, samples, seed, multiplier, block). Input rows must be chronological, complete, unique dates for model interpretation; the API does not sort or impute them. The CLI always generates a complete daily calendar.
 
@@ -46,16 +48,12 @@ the CVAE is not an hourly time-series VAE. Hourly allocation uses a separate
 seeded random stream. Paired scenario daily draws share random numbers; hourly
 allocations preserve totals but are not parcel-level paired arrivals.
 
-### Operations acceptance checklist and unresolved requirements
+### Integrated operations importer
 
-This is the repository's exact offered CSV contract; no supplied operational-team
-specification establishes their importer requirements. Integration is pending
-confirmation of: simulator/software and delimiter/encoding support; daily versus
-hourly input; accepted district IDs and mapping; local date/hour versus timestamp;
-aggregate counts versus one order per row; one path per file versus sample_id;
-arrival-within-hour rule; order IDs, coordinates, parcel capacity units and promised
-windows if order-level records are required. Do not invent these missing fields or
-claim compatibility with an untested simulator. Import one complete sample_id,
-check key uniqueness/nonnegative integer counts, and reconcile district-day totals.
-The simulator should instantiate `parcels` orders in each hour using its agreed
-within-hour arrival rule. Do not sum alternative Monte Carlo paths.
+The SimPy importer is implemented and tested against both contracts. Select one
+sample ID; the suite selects IDs 0..replications-1. It validates unique keys,
+nonnegative integer counts, known districts and a complete contiguous calendar.
+Within-hour arrivals are uniform; coordinates, windows and vehicles are synthesized
+under explicit assumptions in TEAM_HANDOFF.md. No external simulator compatibility
+is claimed. Every selected count is expanded to parcel entities with conserved
+totals; surge is a separate explicit operational multiplier.
