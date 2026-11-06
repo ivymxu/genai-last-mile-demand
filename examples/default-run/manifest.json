@@ -1,0 +1,18 @@
+{
+  "seed": 42,
+  "days": 730,
+  "horizon": 14,
+  "samples": 200,
+  "train_days": 584,
+  "test_days": 146,
+  "python": "3.13.9",
+  "numpy": "2.3.5",
+  "data_kind": "fully synthetic; no real company data",
+  "sha256": {
+    "disruption.csv": "47c5cf4143fa39ac42c798f9be2b98ef119e70ec3f93c374d6883ec8152d927e",
+    "history.csv": "c8e952a01cd614f501ebe4d71c0e668b429f5df27026bdeaaf7213476d9135e5",
+    "metrics.json": "dbb012d14004159c9c634dc9a6364d9798c8c91528f0302ca50176e0b1a30fde",
+    "normal.csv": "c12ffdea8550a276bca023bdd25b1837caa0b73f2eb83c230f18f4613eb856de",
+    "surge.csv": "92702a70306cb9aad06e653df155299cf88193a8abfae2ea2eaf10bf82131bd8"
+  }
+}

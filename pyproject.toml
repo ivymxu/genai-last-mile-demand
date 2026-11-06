@@ -1,0 +1,16 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "genai-last-mile-demand"
+version = "0.1.0"
+description = "Reproducible synthetic demand and scenario generation for ISE450"
+requires-python = ">=3.10"
+dependencies = ["numpy==2.3.5"]
+
+[project.scripts]
+lastmile = "lastmile.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
