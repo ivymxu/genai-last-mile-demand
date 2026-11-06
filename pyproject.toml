@@ -9,6 +9,9 @@ description = "Reproducible synthetic demand and scenario generation for ISE450"
 requires-python = ">=3.10"
 dependencies = ["numpy==2.3.5"]
 
+[project.optional-dependencies]
+neural = ["torch==2.9.1"]
+
 [project.scripts]
 lastmile = "lastmile.cli:main"
 
