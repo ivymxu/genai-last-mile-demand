@@ -1,0 +1,250 @@
+{
+  "config": {
+    "fleet": 48,
+    "capacity": 24,
+    "window_hours": 4.0,
+    "service_minutes": 3.0,
+    "dispatch_minutes": 15.0,
+    "speed_factor": 1.0,
+    "capacity_factor": 1.0,
+    "demand_factor": 1.0,
+    "seed": 42
+  },
+  "replications": 20,
+  "paths": [
+    {
+      "start_date": "2025-12-31",
+      "days": 7,
+      "sample_id": 0,
+      "source_scenario": "normal",
+      "hourly_input": true
+    },
+    {
+      "start_date": "2025-12-31",
+      "days": 7,
+      "sample_id": 1,
+      "source_scenario": "normal",
+      "hourly_input": true
+    },
+    {
+      "start_date": "2025-12-31",
+      "days": 7,
+      "sample_id": 2,
+      "source_scenario": "normal",
+      "hourly_input": true
+    },
+    {
+      "start_date": "2025-12-31",
+      "days": 7,
+      "sample_id": 3,
+      "source_scenario": "normal",
+      "hourly_input": true
+    },
+    {
+      "start_date": "2025-12-31",
+      "days": 7,
+      "sample_id": 4,
+      "source_scenario": "normal",
+      "hourly_input": true
+    },
+    {
+      "start_date": "2025-12-31",
+      "days": 7,
+      "sample_id": 5,
+      "source_scenario": "normal",
+      "hourly_input": true
+    },
+    {
+      "start_date": "2025-12-31",
+      "days": 7,
+      "sample_id": 6,
+      "source_scenario": "normal",
+      "hourly_input": true
+    },
+    {
+      "start_date": "2025-12-31",
+      "days": 7,
+      "sample_id": 7,
+      "source_scenario": "normal",
+      "hourly_input": true
+    },
+    {
+      "start_date": "2025-12-31",
+      "days": 7,
+      "sample_id": 8,
+      "source_scenario": "normal",
+      "hourly_input": true
+    },
+    {
+      "start_date": "2025-12-31",
+      "days": 7,
+      "sample_id": 9,
+      "source_scenario": "normal",
+      "hourly_input": true
+    },
+    {
+      "start_date": "2025-12-31",
+      "days": 7,
+      "sample_id": 10,
+      "source_scenario": "normal",
+      "hourly_input": true
+    },
+    {
+      "start_date": "2025-12-31",
+      "days": 7,
+      "sample_id": 11,
+      "source_scenario": "normal",
+      "hourly_input": true
+    },
+    {
+      "start_date": "2025-12-31",
+      "days": 7,
+      "sample_id": 12,
+      "source_scenario": "normal",
+      "hourly_input": true
+    },
+    {
+      "start_date": "2025-12-31",
+      "days": 7,
+      "sample_id": 13,
+      "source_scenario": "normal",
+      "hourly_input": true
+    },
+    {
+      "start_date": "2025-12-31",
+      "days": 7,
+      "sample_id": 14,
+      "source_scenario": "normal",
+      "hourly_input": true
+    },
+    {
+      "start_date": "2025-12-31",
+      "days": 7,
+      "sample_id": 15,
+      "source_scenario": "normal",
+      "hourly_input": true
+    },
+    {
+      "start_date": "2025-12-31",
+      "days": 7,
+      "sample_id": 16,
+      "source_scenario": "normal",
+      "hourly_input": true
+    },
+    {
+      "start_date": "2025-12-31",
+      "days": 7,
+      "sample_id": 17,
+      "source_scenario": "normal",
+      "hourly_input": true
+    },
+    {
+      "start_date": "2025-12-31",
+      "days": 7,
+      "sample_id": 18,
+      "source_scenario": "normal",
+      "hourly_input": true
+    },
+    {
+      "start_date": "2025-12-31",
+      "days": 7,
+      "sample_id": 19,
+      "source_scenario": "normal",
+      "hourly_input": true
+    }
+  ],
+  "policies": {
+    "normal": {
+      "fleet": 48,
+      "capacity": 24,
+      "window_hours": 4.0,
+      "service_minutes": 3.0,
+      "dispatch_minutes": 15.0,
+      "speed_factor": 1.0,
+      "capacity_factor": 1.0,
+      "demand_factor": 1.0,
+      "seed": 42
+    },
+    "surge": {
+      "fleet": 48,
+      "capacity": 24,
+      "window_hours": 4.0,
+      "service_minutes": 3.0,
+      "dispatch_minutes": 15.0,
+      "speed_factor": 1.0,
+      "capacity_factor": 1.0,
+      "demand_factor": 1.3,
+      "seed": 42
+    },
+    "typhoon": {
+      "fleet": 48,
+      "capacity": 24,
+      "window_hours": 4.0,
+      "service_minutes": 3.0,
+      "dispatch_minutes": 15.0,
+      "speed_factor": 0.55,
+      "capacity_factor": 0.7,
+      "demand_factor": 1.0,
+      "seed": 42
+    },
+    "surge_typhoon": {
+      "fleet": 48,
+      "capacity": 24,
+      "window_hours": 4.0,
+      "service_minutes": 3.0,
+      "dispatch_minutes": 15.0,
+      "speed_factor": 0.55,
+      "capacity_factor": 0.7,
+      "demand_factor": 1.3,
+      "seed": 42
+    },
+    "fleet_minus20": {
+      "fleet": 38,
+      "capacity": 24,
+      "window_hours": 4.0,
+      "service_minutes": 3.0,
+      "dispatch_minutes": 15.0,
+      "speed_factor": 1.0,
+      "capacity_factor": 1.0,
+      "demand_factor": 1.0,
+      "seed": 42
+    },
+    "fleet_plus20": {
+      "fleet": 58,
+      "capacity": 24,
+      "window_hours": 4.0,
+      "service_minutes": 3.0,
+      "dispatch_minutes": 15.0,
+      "speed_factor": 1.0,
+      "capacity_factor": 1.0,
+      "demand_factor": 1.0,
+      "seed": 42
+    },
+    "surge_fleet_plus15": {
+      "fleet": 55,
+      "capacity": 24,
+      "window_hours": 4.0,
+      "service_minutes": 3.0,
+      "dispatch_minutes": 15.0,
+      "speed_factor": 1.0,
+      "capacity_factor": 1.0,
+      "demand_factor": 1.3,
+      "seed": 42
+    }
+  },
+  "python": "3.13.9",
+  "versions": {
+    "numpy": "2.3.5",
+    "simpy": "4.1.1",
+    "scipy": "1.18.1",
+    "streamlit": "1.67.0"
+  },
+  "input_sha256": "f79b3b610a071065798cb72fa99cfa816f89d07d32715f9184e4d69b11424578",
+  "files_sha256": {
+    "REPORT.md": "644f3952ac54b2462b92e7afbb89ef3e319c376e93f475db385ab78c5631688c",
+    "normal_orders_rep0.csv": "30939c719e49db6b0cf81c8a52e5b2f87c3f548ae0e47276156fa4b544ec610f",
+    "replications.csv": "1be861657b3d2f36c42edc96f304b00c2a4f211289a00c8cf87f48a235b13a54",
+    "results.json": "a3b4204939059ff2f0e787faee64b7dc336a599e711c60d097d5963c7aaae55a",
+    "summary.csv": "60736481e66965b0a23a35861f9134abdffe06681cd55470d8af233f50f597dd"
+  }
+}

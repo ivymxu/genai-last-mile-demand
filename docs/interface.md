@@ -1,59 +1,80 @@
-> Integration update: the operational simulator and dashboard are now implemented. See [TEAM_HANDOFF](../TEAM_HANDOFF.md) and [logistics implementation](logistics.md). Phase-1 scope statements below describe the original demand component.
+# Data and output interface
 
-# Demand interface for simulation teammates
+## Daily demand CSV
 
-Each scenario CSV has exactly these columns:
+UTF-8 comma-separated text with a header and no index:
 
-| Column | Type | Meaning |
-|---|---|---|
-| date | ISO date | Hong Kong local service date |
-| district | enum | HK_Island, Kowloon, New_Territories |
-| parcels | nonnegative integer | Aggregate arrivals for the district on that date |
-| promotion, rain, holiday | 0 or 1 | Assumed exogenous context shared by all districts on a date |
-| scenario | string | normal, surge, disruption, or synthetic_history |
-| sample_id | integer | Independent Monte Carlo path identifier within a scenario |
+```csv
+date,district,parcels,promotion,rain,holiday,scenario,sample_id
+```
 
-The scenario primary key is (scenario, sample_id, date, district). History has sample_id 0. One complete path contains horizon × 3 rows. Select one sample_id per simulation replication; do not sum different sample_ids together. Use matching sample_ids across scenarios for paired comparisons. Aggregate counts are not parcel records and contain no addresses, intraday arrival times, parcel sizes, or promised delivery deadlines.
+| Column | Type and meaning |
+|---|---|
+| `date` | ISO local service date in Asia/Hong_Kong |
+| `district` | `HK_Island`, `Kowloon`, `New_Territories` |
+| `parcels` | Nonnegative integer district-day arrival count |
+| `promotion`, `rain`, `holiday` | Binary assumed context, shared by districts on a date |
+| `scenario` | Generator label: normal, surge, disruption or synthetic_history |
+| `sample_id` | Nonnegative integer Monte Carlo path ID; history uses 0 |
 
-The integrated simulator defines the mapping from district counts to parcels, hourly arrivals, coordinates, service times, windows, distances, vehicles, capacities and dispatch policy in TEAM_HANDOFF.md. Preserve each district-day total when expanding counts. Rain may affect travel/service speed in the simulation, but that effect must be separately justified. Demand reduction in the disruption scenario does not imply a capacity reduction.
+Primary key: `(scenario, sample_id, date, district)`. A path contains
+`horizon × 3` rows. Aggregate counts do not contain addresses, parcel sizes,
+individual arrival times or promised deadlines.
 
-Suggested simulation outputs: replication-level delayed parcels / total parcels, utilization, lead time, and optional distance/cost. Compare policies under the same demand paths and report uncertainty across replications. Demand alone cannot identify the highest delay risk: vehicle capacity and routing may change the ordering. The operational engine now lives in lastmile.simulation.
+## Hourly demand CSV
 
-Programmatic customization: construct daily dictionaries with date and binary promotion/rain/holiday flags; fit DemandModel on an N×3 count matrix in DISTRICTS order; call sample(rows, samples, seed, multiplier, block). Input rows must be chronological, complete, unique dates for model interpretation; the API does not sort or impute them. The CLI always generates a complete daily calendar.
-
-## Optional hourly contract (phase-1 extension)
-
-Use `--hourly` to add `history_hourly.csv`, `normal_hourly.csv`,
-`surge_hourly.csv`, and `disruption_hourly.csv`. Existing daily CSV filenames,
-columns, and default statistical behavior remain compatible.
-
-Exact hourly header, in order:
+The demand command's `--hourly` option also exports `history_hourly.csv`,
+`normal_hourly.csv`, `surge_hourly.csv` and `disruption_hourly.csv`:
 
 ```csv
 date,hour,district,parcels,promotion,rain,holiday,scenario,sample_id
 ```
 
-UTF-8 comma-separated text with a header, no index. `hour` is an integer 0–23,
-representing the interval [hour:00, next hour:00) on `date` in Asia/Hong_Kong.
-All other types/enums match the daily contract above. Primary key:
-`(scenario, sample_id, date, hour, district)`. Every path includes all zero-count
-hours and all three districts: horizon × 24 × 3 rows. Rows are ordered by sample,
-date, hour, district in DISTRICTS order. For every path/date/district, summing the
-24 hourly parcel counts exactly recovers the corresponding daily CSV count.
+`hour` is an integer 0–23 for the interval [hour:00, next hour:00). Other columns
+retain their daily meanings; `parcels` is the district-hour count. Primary key:
+`(scenario, sample_id, date, hour, district)`. Paths include every zero-count cell
+and all districts: `horizon × 24 × 3` rows, ordered by sample, date, hour, district
+in `DISTRICTS` order. Summing 24 hourly counts exactly recovers each daily count.
+The allocation profile is assumed, not learned from hourly observations.
 
-The intraday two-peak profile in `lastmile.hourly.PROFILE` is an illustrative
-multinomial allocation, NOT an hourly pattern learned from data. Daily inputs
-cannot identify an hourly profile. Both models learn daily district demand;
-the CVAE is not an hourly time-series VAE. Hourly allocation uses a separate
-seeded random stream. Paired scenario daily draws share random numbers; hourly
-allocations preserve totals but are not parcel-level paired arrivals.
+## Simulation import and programmatic use
 
-### Integrated operations importer
+`load_demand(path, sample_id)` selects one complete path. The suite selects sample
+IDs `0..replications-1`; alternative paths must not be summed together. The loader
+requires one scenario per selected path, known districts, unique keys,
+nonnegative integer counts and a contiguous complete calendar including zeros.
+It rejects missing/duplicate cells and fractional counts/hours. The generator's
+context columns are retained in exports; the logistics importer uses dates,
+hours if present, district, parcels, scenario and sample ID.
 
-The SimPy importer is implemented and tested against both contracts. Select one
-sample ID; the suite selects IDs 0..replications-1. It validates unique keys,
-nonnegative integer counts, known districts and a complete contiguous calendar.
-Within-hour arrivals are uniform; coordinates, windows and vehicles are synthesized
-under explicit assumptions in TEAM_HANDOFF.md. No external simulator compatibility
-is claimed. Every selected count is expanded to parcel entities with conserved
-totals; surge is a separate explicit operational multiplier.
+Daily inputs are expanded with the assumed hourly profile and seed
+`sample_id + 7301`. Within-hour arrivals, coordinates and vehicle rules follow the
+[methodology](METHODOLOGY.md). Using a pre-surged input as the suite's baseline
+applies another 30% intervention in its surge policy. A scenario label does not
+automatically change vehicle speed/capacity. No external simulator compatibility
+is claimed.
+
+For custom daily demand, construct chronological unique date dictionaries with
+binary context and fit `DemandModel` to an `N × 3` count matrix in `DISTRICTS`
+order. `sample(rows, samples, seed, multiplier, block)` produces complete demand
+paths; it does not sort dates or impute missing values. `simulate` accepts a
+`days × 24 × 3` nonnegative integer array and a validated `Config`.
+
+## Project outputs
+
+| Path below the project run directory | Content |
+|---|---|
+| `demand/history*.csv` | Synthetic history, daily/hourly |
+| `demand/normal*.csv`, `surge*.csv`, `disruption*.csv` | Alternative future paths; disruption is demand-only |
+| `demand/model.npz` | Fitted selected demand model; load according to `manifest.model` |
+| `demand/metrics.json`, `manifest.json` | Holdout diagnostics, parameters, versions and export hashes |
+| `simulation/replications.csv` | Counts, fleet/capacity, rates/times, utilization and overtime per run |
+| `simulation/summary.csv`, `results.json`, `REPORT.md` | Means, 95% intervals, paired changes and hypothetical target check |
+| `simulation/normal_orders_rep0.csv` | Full normal replication-0 parcel audit trace |
+| `simulation/manifest.json` | Configurations, path metadata, versions, input and output hashes |
+
+Only normal replication 0 is persisted as a parcel trace by the CLI suite; other
+replications retain aggregate metrics. Dashboard downloads can include all parcel
+traces from the selected single-run scenarios. Model NPZ byte hashes are omitted
+from the demand manifest because archive metadata can vary; array/prediction
+round trips are covered by tests. Existing runs are protected against overwrites.

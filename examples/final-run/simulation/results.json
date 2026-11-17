@@ -1,0 +1,377 @@
+{
+  "data_kind": "synthetic simulation; not observed logistics performance",
+  "summary": {
+    "normal": {
+      "delay_rate": {
+        "mean": 0.0019898394853257286,
+        "ci95_low": -0.00030410332398240775,
+        "ci95_high": 0.004283782294633865,
+        "replications": 20
+      },
+      "avg_delivery_hours": {
+        "mean": 1.1642527897370794,
+        "ci95_low": 1.1215726831990014,
+        "ci95_high": 1.2069328962751573,
+        "replications": 20
+      },
+      "fleet_utilization": {
+        "mean": 0.5152510690223078,
+        "ci95_low": 0.500726013156683,
+        "ci95_high": 0.5297761248879326,
+        "replications": 20
+      },
+      "clearance_overtime_hours": {
+        "mean": 1.05,
+        "ci95_low": 0.9601679229627762,
+        "ci95_high": 1.139832077037224,
+        "replications": 20
+      },
+      "parcels": {
+        "mean": 35343.4,
+        "ci95_low": 34228.32904385728,
+        "ci95_high": 36458.47095614272,
+        "replications": 20
+      }
+    },
+    "surge": {
+      "delay_rate": {
+        "mean": 0.07036626991315206,
+        "ci95_low": 0.0452843924472051,
+        "ci95_high": 0.09544814737909903,
+        "replications": 20
+      },
+      "avg_delivery_hours": {
+        "mean": 1.8097689031272064,
+        "ci95_low": 1.655533727615504,
+        "ci95_high": 1.9640040786389088,
+        "replications": 20
+      },
+      "fleet_utilization": {
+        "mean": 0.6477968737637442,
+        "ci95_low": 0.6302912258060892,
+        "ci95_high": 0.6653025217213991,
+        "replications": 20
+      },
+      "clearance_overtime_hours": {
+        "mean": 1.4625,
+        "ci95_low": 1.1465446635201524,
+        "ci95_high": 1.7784553364798474,
+        "replications": 20
+      },
+      "parcels": {
+        "mean": 45947.8,
+        "ci95_low": 44498.583707654114,
+        "ci95_high": 47397.01629234589,
+        "replications": 20
+      }
+    },
+    "typhoon": {
+      "delay_rate": {
+        "mean": 0.3946747788769311,
+        "ci95_low": 0.33479229684158335,
+        "ci95_high": 0.4545572609122788,
+        "replications": 20
+      },
+      "avg_delivery_hours": {
+        "mean": 3.8199992933253335,
+        "ci95_low": 3.3934876288965503,
+        "ci95_high": 4.246510957754117,
+        "replications": 20
+      },
+      "fleet_utilization": {
+        "mean": 0.8084435837404632,
+        "ci95_low": 0.7898264406859943,
+        "ci95_high": 0.8270607267949321,
+        "replications": 20
+      },
+      "clearance_overtime_hours": {
+        "mean": 6.375,
+        "ci95_low": 4.927247610007449,
+        "ci95_high": 7.822752389992551,
+        "replications": 20
+      },
+      "parcels": {
+        "mean": 35343.4,
+        "ci95_low": 34228.32904385728,
+        "ci95_high": 36458.47095614272,
+        "replications": 20
+      }
+    },
+    "surge_typhoon": {
+      "delay_rate": {
+        "mean": 0.881431925903477,
+        "ci95_low": 0.8398396456281528,
+        "ci95_high": 0.9230242061788011,
+        "replications": 20
+      },
+      "avg_delivery_hours": {
+        "mean": 13.357881383461361,
+        "ci95_low": 10.510131093650802,
+        "ci95_high": 16.20563167327192,
+        "replications": 20
+      },
+      "fleet_utilization": {
+        "mean": 0.9183714286415118,
+        "ci95_low": 0.9149091227792718,
+        "ci95_high": 0.9218337345037517,
+        "replications": 20
+      },
+      "clearance_overtime_hours": {
+        "mean": 27.4125,
+        "ci95_low": 21.7083304720961,
+        "ci95_high": 33.1166695279039,
+        "replications": 20
+      },
+      "parcels": {
+        "mean": 45947.8,
+        "ci95_low": 44498.583707654114,
+        "ci95_high": 47397.01629234589,
+        "replications": 20
+      }
+    },
+    "fleet_minus20": {
+      "delay_rate": {
+        "mean": 0.05721583599850529,
+        "ci95_low": 0.036464633550508316,
+        "ci95_high": 0.07796703844650227,
+        "replications": 20
+      },
+      "avg_delivery_hours": {
+        "mean": 1.6999720343933515,
+        "ci95_low": 1.5632591386898578,
+        "ci95_high": 1.8366849300968453,
+        "replications": 20
+      },
+      "fleet_utilization": {
+        "mean": 0.6479863987781486,
+        "ci95_low": 0.6315741668159969,
+        "ci95_high": 0.6643986307403003,
+        "replications": 20
+      },
+      "clearance_overtime_hours": {
+        "mean": 1.1875,
+        "ci95_low": 0.9389352759163292,
+        "ci95_high": 1.4360647240836708,
+        "replications": 20
+      },
+      "parcels": {
+        "mean": 35343.4,
+        "ci95_low": 34228.32904385728,
+        "ci95_high": 36458.47095614272,
+        "replications": 20
+      }
+    },
+    "fleet_plus20": {
+      "delay_rate": {
+        "mean": 8.14265939255761e-06,
+        "ci95_low": -8.900122582919214e-06,
+        "ci95_high": 2.5185441368034433e-05,
+        "replications": 20
+      },
+      "avg_delivery_hours": {
+        "mean": 1.0663462577233418,
+        "ci95_low": 1.0559326721705433,
+        "ci95_high": 1.0767598432761403,
+        "replications": 20
+      },
+      "fleet_utilization": {
+        "mean": 0.4249313790767074,
+        "ci95_low": 0.4129407569195188,
+        "ci95_high": 0.436922001233896,
+        "replications": 20
+      },
+      "clearance_overtime_hours": {
+        "mean": 1.05,
+        "ci95_low": 0.9601679229627762,
+        "ci95_high": 1.139832077037224,
+        "replications": 20
+      },
+      "parcels": {
+        "mean": 35343.4,
+        "ci95_low": 34228.32904385728,
+        "ci95_high": 36458.47095614272,
+        "replications": 20
+      }
+    },
+    "surge_fleet_plus15": {
+      "delay_rate": {
+        "mean": 0.018187048804891463,
+        "ci95_low": 0.00858905770804071,
+        "ci95_high": 0.027785039901742217,
+        "replications": 20
+      },
+      "avg_delivery_hours": {
+        "mean": 1.3857933082327474,
+        "ci95_low": 1.3008254542763513,
+        "ci95_high": 1.4707611621891434,
+        "replications": 20
+      },
+      "fleet_utilization": {
+        "mean": 0.5678028210668624,
+        "ci95_low": 0.5517573545536733,
+        "ci95_high": 0.5838482875800516,
+        "replications": 20
+      },
+      "clearance_overtime_hours": {
+        "mean": 1.275,
+        "ci95_low": 1.1440483700454775,
+        "ci95_high": 1.4059516299545223,
+        "replications": 20
+      },
+      "parcels": {
+        "mean": 45947.8,
+        "ci95_low": 44498.583707654114,
+        "ci95_high": 47397.01629234589,
+        "replications": 20
+      }
+    }
+  },
+  "paired_difference_vs_normal": {
+    "surge": {
+      "delay_rate": {
+        "mean": 0.06837643042782635,
+        "ci95_low": 0.04415662695021973,
+        "ci95_high": 0.09259623390543296,
+        "replications": 20
+      },
+      "avg_delivery_hours": {
+        "mean": 0.6455161133901274,
+        "ci95_low": 0.5317168532495098,
+        "ci95_high": 0.759315373530745,
+        "replications": 20
+      },
+      "fleet_utilization": {
+        "mean": 0.13254580474143635,
+        "ci95_low": 0.12929046697112673,
+        "ci95_high": 0.13580114251174596,
+        "replications": 20
+      }
+    },
+    "typhoon": {
+      "delay_rate": {
+        "mean": 0.39268493939160537,
+        "ci95_low": 0.33351658770509085,
+        "ci95_high": 0.4518532910781199,
+        "replications": 20
+      },
+      "avg_delivery_hours": {
+        "mean": 2.655746503588254,
+        "ci95_low": 2.269522932362232,
+        "ci95_high": 3.0419700748142757,
+        "replications": 20
+      },
+      "fleet_utilization": {
+        "mean": 0.2931925147181554,
+        "ci95_low": 0.28776912066120797,
+        "ci95_high": 0.2986159087751028,
+        "replications": 20
+      }
+    },
+    "surge_typhoon": {
+      "delay_rate": {
+        "mean": 0.8794420864181512,
+        "ci95_low": 0.8380932466306472,
+        "ci95_high": 0.9207909262056553,
+        "replications": 20
+      },
+      "avg_delivery_hours": {
+        "mean": 12.193628593724283,
+        "ci95_low": 9.381218678577977,
+        "ci95_high": 15.006038508870589,
+        "replications": 20
+      },
+      "fleet_utilization": {
+        "mean": 0.40312035961920395,
+        "ci95_low": 0.3907268290908371,
+        "ci95_high": 0.4155138901475708,
+        "replications": 20
+      }
+    },
+    "fleet_minus20": {
+      "delay_rate": {
+        "mean": 0.05522599651317957,
+        "ci95_low": 0.03545885957868565,
+        "ci95_high": 0.07499313344767349,
+        "replications": 20
+      },
+      "avg_delivery_hours": {
+        "mean": 0.5357192446562723,
+        "ci95_low": 0.43904038354104263,
+        "ci95_high": 0.632398105771502,
+        "replications": 20
+      },
+      "fleet_utilization": {
+        "mean": 0.13273532975584082,
+        "ci95_low": 0.1306019932379654,
+        "ci95_high": 0.13486866627371624,
+        "replications": 20
+      }
+    },
+    "fleet_plus20": {
+      "delay_rate": {
+        "mean": -0.001981696825933171,
+        "ci95_low": -0.004259548400348002,
+        "ci95_high": 0.0002961547484816602,
+        "replications": 20
+      },
+      "avg_delivery_hours": {
+        "mean": -0.09790653201373732,
+        "ci95_low": -0.13070937324574627,
+        "ci95_high": -0.06510369078172838,
+        "replications": 20
+      },
+      "fleet_utilization": {
+        "mean": -0.0903196899456004,
+        "ci95_low": -0.09289430074266505,
+        "ci95_high": -0.08774507914853574,
+        "replications": 20
+      }
+    },
+    "surge_fleet_plus15": {
+      "delay_rate": {
+        "mean": 0.01619720931956574,
+        "ci95_low": 0.008391165149149449,
+        "ci95_high": 0.02400325348998203,
+        "replications": 20
+      },
+      "avg_delivery_hours": {
+        "mean": 0.22154051849566825,
+        "ci95_low": 0.17787345190938317,
+        "ci95_high": 0.2652075850819533,
+        "replications": 20
+      },
+      "fleet_utilization": {
+        "mean": 0.052551752044554666,
+        "ci95_low": 0.05077299019972453,
+        "ci95_high": 0.0543305138893848,
+        "replications": 20
+      }
+    }
+  },
+  "reserve_difference_vs_surge": {
+    "delay_rate": {
+      "mean": -0.0521792211082606,
+      "ci95_low": -0.0711437679391555,
+      "ci95_high": -0.0332146742773657,
+      "replications": 20
+    },
+    "avg_delivery_hours": {
+      "mean": -0.42397559489445913,
+      "ci95_low": -0.4956365678374318,
+      "ci95_high": -0.35231462195148644,
+      "replications": 20
+    },
+    "fleet_utilization": {
+      "mean": -0.07999405269688169,
+      "ci95_low": -0.08186386619068638,
+      "ci95_high": -0.078124239203077,
+      "replications": 20
+    }
+  },
+  "calibration": {
+    "hypothetical_target": 0.15,
+    "tolerance": 0.02,
+    "normal_mean_within_target_band": false,
+    "meaning": "Internal target check only; does not establish real-world validity."
+  }
+}
