@@ -1,0 +1,14 @@
+{
+  "recorded_at_utc": "2026-11-17T10:58:18.664851+00:00",
+  "source_commit": "78eb1691e8e2a5122477bb6a75e55c618a6cf8fc",
+  "command": "lastmile-project --out examples/final-run --replications 20 --horizon 7 --seed 42",
+  "status": "completed; newly generated final run; earlier examples preserved",
+  "python": "3.13.9",
+  "generator": "statistical",
+  "replications": 20,
+  "horizon_days": 7,
+  "seed": 42,
+  "environment_sha256": "5d0a4d821c034522fff28fd597e9c4066575c761892e3d38b6ffd7bc783682e8",
+  "demand_manifest_sha256": "790745f266989af5f89666ce3669122b937ded00b8f8bb10a0536a8d42d03016",
+  "simulation_manifest_sha256": "9616e27d5658db42288684a54ebc7bc6cf3eda791dd4834d0df55dfe5fea3dbe"
+}
